@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+
+{% block body %}
+<div class="jumbotron">
+	<div class="container">
+		{{ form_start(form)}}
+		<div class="form-row">
+		<div class="col">
+			{{ form_row(form.minSurface)}}
+		</div>
+			
+		<div class="col">
+			{{ form_row(form.maxPrix)}}
+		</div>
+		</div>
+		<button type="submit">Rechercher</button>
+		{{ form_end(form)}}
+	</div>	
+</div>
+<div class="row">
+	{% for bien in biens %}
+		<div class="col-4 card mb-2">
+			<h3 class="card-header">{{ bien.titre }}</h3>
+			<div class="card-body">
+				<h5 class="card-title">{{ bien.titre }}</h5>
+			</div>
+			<img src="{{ asset('uploads/files/' ~ bien.file ) }}" alt="Card image">
+			<div class="card-body">
+				<p class="card-text">{{ bien .description}}</p>
+			</div>
+			<ul class="list-group list-group-flush">
+			
+				<li class="list-group-item">Surface : {{ bien.surface }}</li>
+				<li class="list-group-item">Ville : {{ bien.ville }}</li>
+				<li class="list-group-item">Code Postal : {{ bien.codePostale }}</li> 
+				{# <li class="list-group-item">Prix : {{ bien.prix | number_format(0, '', ' ') }} $</li> #}
+				<li class="list-group-item">Prix : {{ bien.formattedPrix }} $</li>
+			</ul>
+			<div class="card-body">
+				<a class="btn btn-primary" href="{{ path('bien_detail', {id: bien.id}) }}" role="button">Detail</a>
+			</div>
+			<div class="card-footer text-muted">
+				<p>Mis en ligne le : {{ bien.createdAt | date('d-m-Y')}}</p>
+			</div>
+		</div>
+
+    {% endfor %}
+	
+</div>
+<div class="row navigation">
+    	{{ knp_pagination_render(biens) }}
+	</div>
+{% endblock %}
+
+
+    

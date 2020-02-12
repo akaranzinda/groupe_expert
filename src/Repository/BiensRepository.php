@@ -3,12 +3,14 @@
 namespace App\Repository;
 
 use App\Entity\Biens;
+use App\Form\BiensType;
 use Doctrine\ORM\Query;
 use App\Entity\Recherche;
 use App\Form\RechercheType;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 
 /**
  * @method Biens|null find($id, $lockMode = null, $lockVersion = null)
@@ -60,11 +62,19 @@ class BiensRepository extends ServiceEntityRepository
     /**
      * @return Biens[]
      */
-    public function findLatest(): array
+    public function findLatest($entity)
     {
-        return $this->findVisibleQuery()
+        return $this->getEntityManager()->createQuery("
+        SELECT e FROM $entity e ORDER BY e.id DESC")
             ->setMaxResults(4)
-            ->getQuery()
+            ->getResult();
+
+    }
+
+    public function Demeures($entity, $demeures) {
+
+        return $this->getEntityManager()->createQuery("
+        SELECT e FROM $entity e WHERE e.titre LIKE '$demeures%'")
             ->getResult();
     }
 

@@ -29,10 +29,7 @@ class BiensType extends AbstractType
                 'choice_label' => 'nom',
                 'multiple' => true
             ])
-            ->add('imageName')
-            ->add('imageFile', FileType::class, [
-                'required' => false
-            ])
+            
             ->add('file', FileType::class, [
                 'label' => 'file',
                 'required' => false,

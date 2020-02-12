@@ -1,66 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Biens{% endblock %}
+{% block title %}Bienss{% endblock %}
 
 {% block body %}
-    <h1>Biens</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ bien.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ bien.titre }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td><img src="{{ asset('uploads/files/' ~ bien.file) }}" alt="Card image"></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ bien.description }}</td>
-            </tr>
-            <tr>
-                <th>Surface</th>
-                <td>{{ bien.surface }}</td>
-            </tr>
-            <tr>
-                <th>Piece</th>
-                <td>{{ bien.piece }}</td>
-            </tr>
-            <tr>
-                <th>Chambre</th>
-                <td>{{ bien.chambre }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ bien.ville }}</td>
-            </tr>
-            <tr>
-                <th>CodePostale</th>
-                <td>{{ bien.codePostale }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ bien.prix }}</td>
-            </tr>
-            <tr>
-                <th>Vendu</th>
-                <td>{{ bien.vendu ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ bien.createdAt ? bien.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Modal Boxes -->
+        <!-- house description-->
+        <div id="description" style="margin: 100px 50px 20px 0;" >
+            <div class="container-fluid row">
+                <div class="modal-content col-xs-12 col-sm-6 col-sm-push-3">
+                    <div class="modal-content-header">
+                    <i class="fa fa-times animation" data-dismiss="modal"></i>
+                    </div>
+                    <div class="modal-content-body">
+                        <div class="description">
 
-    <a href="{{ path('biens_index') }}">back to list</a>
-
-    <a href="{{ path('biens_edit', {'id': bien.id}) }}">edit</a>
-
-    {{ include('biens/_delete_form.html.twig') }}
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <h4>Informations sur le bien : {{ biens.titre }}</h4>
+                                    <div class="box">
+                                    <h5>Descripttion<h5>
+                                    <p> {{ biens.description}} </p>
+                                    <h5>Spécificités<h5>
+                                <ul>
+                                   
+                                    <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Surface : {{ biens.surface }}</li>
+                                    <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Nombre de pièce : {{ biens.piece }} </li>
+                                    <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Nombre de chambre : {{ biens.chambre }} </li>
+                                    <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Ville : {{ biens.ville }} </li>
+                                    <li><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Code Postal : {{ biens.codePostale }} </li>
+                                </ul>
+                                <p class="footer" style="margin: 15px;">
+                                    <span class="title">Price</span><span class="label label-danger text-left">$ 15000</span>
+                                </p>
+                            </div>
+                                </div>
+                                <div class="col-xs-6 col-md-8">
+                                    <img class="img-responsive img-thumbnail" style="padding:75px;" src="{{asset ('img/selling-img/sel-img2.jpg')}}">
+                                     <div>
+                                     <p> {{ biens.description}} </p>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map">
+                            <h4>House Address</h4>
+                            <p>Segbe, rue akato, Maison Don Peno</p>
+                            <div class="box">
+                                <div class="google-map"><i class="fa fa-map-marker"></i></div>
+                            </div>
+                        </div>
+                       
+                        <div class="map center-block">
+                        </div>
+                         <div class="container">
+                            <div class="row">
+                                <p>Si vous etez intéressé par le bien, merci de nous contactez</p>
+                                <a href="{{ path('app_login')}}"class="btn btn-danger" style="margin-bottom: 30px;">Identifiez-vous</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- End of house description-->
+    
 {% endblock %}

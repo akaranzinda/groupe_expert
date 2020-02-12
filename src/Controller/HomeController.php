@@ -30,7 +30,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'biens' => $paginator->paginate(
                 $biensRepository->findAllVisibleQuery($recherche),
-                $request->query->getInt('page', 1), 9),
+                $request->query->getInt('page', 1), 4),
             'form'  => $form->createView()
 
         ]);

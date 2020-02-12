@@ -30,23 +30,6 @@ class Biens
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
-     */
-    private $imageName;
-    
-    /**
-     * @var File|null
-     */
-    private $imageFile;
-
-    /**
-     * @var \DateTimeInterface|null
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAt;
-
-    /**
-     * @var string|null
      * @Assert\Length(min=5, max=255)
      * @ORM\Column(type="string", length=255)
      */
@@ -107,6 +90,11 @@ class Biens
      * @ORM\ManyToMany(targetEntity="App\Entity\Option", inversedBy="biens")
      */
     private $options;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
 
     public function __construct()
     {
@@ -272,57 +260,6 @@ class Biens
     }
 
     /**
-     * Get the value of imageFile
-     *
-     * @return  File|null
-     */ 
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * Set the value of imageFile
-     * 
-     * @param  File|UploadedFile|null  $imageFile
-     *
-     * @return  self
-     */ 
-    public function setImageFile(?File $imageFile = null)
-    {
-        $this->imageFile = $imageFile;
-
-        if ($this->imageFile instanceof UploadedFile) {
-            $this->updatedAt = new \DateTime('now');
-        }
-        return $this;
-    }
-
-    /**
-     * Get the value of imageName
-     *
-     * @return  string|null
-     */ 
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * Set the value of imageName
-     *
-     * @param  string|null  $imageName
-     *
-     * @return  self
-     */ 
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
      * Get the value of file
      */ 
     public function getFile()
@@ -338,6 +275,18 @@ class Biens
     public function setFile($file)
     {
         $this->file = $file;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

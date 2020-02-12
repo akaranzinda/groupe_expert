@@ -1,20 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AcheterController!{% endblock %}
+{% block title %}Tous nos biens{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/PROJET/agence-project-app/src/Controller/AcheterController.php'|file_link(0) }}">src/Controller/AcheterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/PROJET/agence-project-app/templates/acheter/index.html.twig'|file_link(0) }}">templates/acheter/index.html.twig</a></code></li>
-    </ul>
+<!-- Selling Section -->
+<div id="selling" class="container-fluid selling-index">
+  	<div class="container text-center">
+  		<ul class="title section-title">
+  			<li class="line"></li>
+  			<li><h2>TOUS NOS BIENS A VENDRE</h2></li>
+  			<li class="line"></li>
+  		</ul>
+  		<p class="text-muted header-para">Des suite, villas et champs aux noms prestigieux et celèbres </p>
+  		<div class="selling-body">
+  			<ul class="selling-body-menu">
+  				<li class="active"><a href="#appartments" data-toggle="tab">Suites</a></li>
+  				<li><a href="#villas" data-toggle="tab">Villas</a></li>
+  				<li><a href="#fields" data-toggle="tab">Des Champs</a></li>
+  			</ul>
+  			<div class="tab-content">
+			  	{% if suites is not empty %}
+				  	<div id="appartments" class="tab-pane active">
+						<div class="row">
+							{% for suite in suites  %}
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="img-block">
+										<img class="img-thumbnail img-responsive" src="{{asset ('img/selling-img/')}}{{suite.image}}">
+										<h5>{{ suite.titre}}</h5>
+										<p>{{ suite.description}}</p>
+										<div class="btn-block">
+											 <p style="color: red;">Ville de : {{ suite.ville}}</p>
+											 <a href="{{ path ('biens_show', {'id': suite.id}) }}" data-toggle="modal">More <i class="fa fa-caret-right"></i></a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
+				{% if villas is not empty %}
+				  	<div id="villas" class="tab-pane">
+						<div class="row">
+							{% for villa in villas  %}
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="img-block">
+										<img class="img-thumbnail img-responsive" src="{{asset ('img/selling-img/')}}{{villa.image}}">
+										<h5>{{ villa.titre}}</h5>
+										<p>{{ villa.description}}</p>
+										<div class="btn-block">
+											 <p style="color: red;">Ville de : {{ villa.ville}}</p>
+											 <a href="{{ path ('biens_show', {'id': villa.id}) }}" data-toggle="modal">More <i class="fa fa-caret-right"></i></a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}
+				{% if deschamps is not empty %}
+				  	<div id="fields" class="tab-pane">
+						<div class="row">
+							{% for deschamps in deschamps  %}
+								<div class="col-xs-12 col-sm-6 col-md-3">
+									<div class="img-block">
+										<img class="img-thumbnail img-responsive" src="{{asset ('img/selling-img/')}}{{deschamps.image}}">
+										<h5>{{ deschamps.titre}}</h5>
+										<p>{{ deschamps.description}}</p>
+										<div class="btn-block">
+											 <p style="color: red;">Ville de : {{ deschamps.ville}}</p>
+											 <a href="{{ path ('biens_show', {'id': deschamps.id}) }}" data-toggle="modal">More <i class="fa fa-caret-right"></i></a>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endif %}	
+			</div>  		  
+  		</div>
+  	</div>
 </div>
+ <!-- End of Selling Section -->
 {% endblock %}
+

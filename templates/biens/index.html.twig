@@ -16,7 +16,7 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
-                <th>Image</th>
+                {# <th>Image</th> #}
                 <th>Description</th>
                 <th>Surface</th>
                 <th>Piece</th>
@@ -35,7 +35,7 @@
             <tr>
                 <td>{{ bien.id }}</td>
                 <td>{{ bien.titre }}</td>
-                <td>{{ bien.imageName }}</td>
+                {# <td><img src="{{ asset('uploads/files/' ~ bien.file) }}" alt="Card image"></td> #}
                 <td>{{ bien.description }}</td>
                 <td>{{ bien.surface }}</td>
                 <td>{{ bien.piece }}</td>

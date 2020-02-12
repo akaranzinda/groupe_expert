@@ -1,83 +1,136 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+    <!-- Theme Informations -->	
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+    <!-- Theme Informations -->
+
+        {% block title %}Welcome!
 			{% endblock %}
-		</title>
-		{% block stylesheets %}
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-		{% endblock %}
-	</head>
 
-        {# ********************************************************************* #}
-        {# ********************************************************************* #}
-		{# ********************************************************************* #}
+    <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{asset ('bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset ('css/style_index.css')}}">
+        <link rel="stylesheet" href="{{ asset ('css/common-style.css')}}">
+    <!-- Stylesheets -->
+    
+    <!-- Icons & Fonts -->
+        <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css')}}">
+    <!-- Icons & Fonts -->
 
-	<body>
-		<header>
-			{% block header %}
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a class="navbar-brand" href="/">AgenceToutRisk</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
+    </head>
 
-					<div class="collapse navbar-collapse" id="navbarColor02">
-						<ul class="navbar-nav mr-auto">
-							<li class="nav-item active">
-								<a class="nav-link" href="/">Home
-									<span class="sr-only">(current)</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('acheter') }}">Acheter</a>
-							</li>
-							{% if app.user %}
-								<li class="nav-item">
-									<a class="nav-link btn-primary" href="{{ path('biens_index')}}">Zone admin</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link btn-danger" href="{{ path('app_logout')}}">LogOut</a>
-								</li>
-								<li class="nav-item">
-									{{ app.user.roles | join  }}
-								</li>
-							{% else %}
-								<li class="nav-item">
-									<a class="nav-link btn-success" href="{{ path('app_login')}}">Login admin</a>
-								</li>
+	 <body id="page-top">
+    {% block nav %}
+        <!-- Navigation Section-->
+    <nav id="nav" class="container-fluid navbar navbar-default navbar-fixed-top">
+            <div class="container">
+				<div class="navbar-header page-scroll">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#toggle">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand page-scroll" href="{{ path ('home')}}"><span>{Groupe Expert}</span></a>
+				</div>
+				<div class="collapse navbar-collapse" id="toggle">
+						<ul class="nav navbar-nav">
+							<li class="lBorder"><a class="page-scroll" href="{{ path ('home')}}">HOME</a></li>
+							<li class="lBorder"><a class="page-scroll" href="{{ path ('acheter')}}">ACHETER</a></li>
+							{% if app.user %}    
+								<li class="lBorder"><a class="page-scroll" href="{{ path ('biens_index')}}">ZONE ADMIN</a></li>
+								<li class="lBorder"><a class="page-scroll" href="{{ path ('app_logout')}}">LOGOUT</a></li>
+								<li class="lBorder">{{ app.user.roles | join  }}</li>	
+								{% else %}
+									<li class="lBorder"><a class="page-scroll" href="{{ path ('app_login')}}">LOGIN ADMIN</a></li>
 							{% endif %}			
 						</ul>
-					</div>
-				</nav>
-			{% endblock %}
-		</header>
-
-		{# ********************************************************************* #}
-		{# ********************************************************************* #}
-		{# ********************************************************************* #}
-
-            <div class="container mt-4"> 
-                {% block body %}{% endblock %}
+            	</div>							
             </div>
+    </nav>
+    <!-- End of Navigation section-->
+    {% endblock %}
 
 		{# ********************************************************************* #}
 		{# ********************************************************************* #}
 		{# ********************************************************************* #}
 
-			<footer>
-				{% block footer %}{% endblock %}
-			</footer>
+	{% block body %}{% endblock %}
 
-		{# ******************************************************************** #}
-		{# ******************************************************************** #}
-		{# ******************************************************************** #}
+		{# ********************************************************************* #}
+		{# ********************************************************************* #}
+		{# ********************************************************************* #}
 
-			{% block javascripts %}
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-			{% endblock %}
-		</body>
-	</html>
+	{% block footer %}
+	<!-- Footer Section -->
+	<footer>
+		<div class="row container-fluid">
+			<div class="container">
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<h5><span>{RE.}</span> IMMOBILIER </h5>
+					<ul>
+						<li><a class="page-scroll" href="#selling">Selling</a></li>
+						<li><a class="page-scroll" href="#renting">Renting</a></li>
+						<li><a class="page-scroll" href="#about">Leasehold</a></li>
+						<li><a class="page-scroll" href="#about">About Us</a></li>
+						<li><a data-toggle="modal" href="#contact-form">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<h5>FOLLOW US</h5>
+					<ul>
+						<li><a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+						<li><a href=""><i class="fa fa-twitter"></i> Twitter</a></li>
+						<li><a href=""><i class="fa fa-google-plus"></i> Google Plus</a></li>
+						<li><a href=""><i class="fa fa-linkedin"></i> Linkedin</a></li>
+						<li><a href=""><i class="fa fa-instagram"></i> Instagram</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<h5>THIS THEMES PAGES</h5>
+					<ul>
+						<li><a href="index.html">First theme</a></li>
+						<li><a href="second-theme.html">Second Theme</a></li>
+						<li><a href="third-theme.html">Third Theme</a></li>
+						<li><a href="404.html">Error 404</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-3">
+					<h5>SUSCRIBE TO OUR NEWSLETTER</h5>
+					<p>Enter your email adresse to receive our newsletter!</p>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Enter Your E-mail">
+								<span class="input-group-btn">
+									<button type="submit" class="btn"><i class="fa fa-send-o"></i></button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div> 
+		</div>
+				<div class="footer-ending text-center">
+					<p>&copy; Real Estate Template 2018</p>
+				</div>
+	</footer>
+		<!-- End of Footer Section -->
+	{% endblock %}
+	{% block javascripts %}
+	<!-- jQuery-->
+			<script src="{{ asset('js/jquery.min.js')}}"></script>
+		<!-- Bootstrap Core Javascript--> 
+			<script src="{{ asset('bootstrap/js/bootstrap.min.js')}}"></script>
+		<!-- Plugins -->
+			<script src="{{ asset('js/jquery.easing.min.js')}}"></script>
+			<script src="{{ asset('js/script.js')}}"></script>
+	{% endblock %}
+	</body>
+</html>

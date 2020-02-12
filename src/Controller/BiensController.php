@@ -26,7 +26,8 @@ class BiensController extends AbstractController
     public function index(BiensRepository $biensRepository): Response
     {   
         return $this->render('biens/index.html.twig', [
-            'biens' => $biensRepository->findAll(),
+            'current_menu' => 'biens',
+            'biens' => $biensRepository->findLatest('App:Biens'),
         ]);
         
     }
@@ -80,7 +81,7 @@ class BiensController extends AbstractController
     public function show(Biens $bien): Response
     {
         return $this->render('biens/show.html.twig', [
-            'bien' => $bien,
+            'biens' => $bien,
         ]);
     }
 
