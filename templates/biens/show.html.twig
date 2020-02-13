@@ -43,14 +43,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="map">
-                            <h4>House Address</h4>
-                            <p>Segbe, rue akato, Maison Don Peno</p>
+                          <div class="map">
+                            <h4>Localisation du bien</h4>
+                            <p>Ville : {{ biens.ville }}</p>
+                             <p>Code Postal : {{ biens.codePostale }}</p>
+
                             <div class="box">
                                 <div class="google-map"><i class="fa fa-map-marker"></i></div>
                             </div>
                         </div>
-                       
                         <div class="map center-block">
                         </div>
                          <div class="container">
@@ -63,6 +64,5 @@
                 </div>
             </div>
         </div>
-    <!-- End of house description-->
-    
+    <!-- End of house description--
 {% endblock %}

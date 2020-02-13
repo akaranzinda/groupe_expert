@@ -23,11 +23,7 @@ class Biens
      * @ORM\Column(type="integer")
      */
     private $id;
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $file;
-
+   
     /**
      * @var string|null
      * @Assert\Length(min=5, max=255)
@@ -259,25 +255,6 @@ class Biens
         return $this;
     }
 
-    /**
-     * Get the value of file
-     */ 
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Set the value of file
-     *
-     * @return  self
-     */ 
-    public function setFile($file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
 
     public function getImage(): ?string
     {

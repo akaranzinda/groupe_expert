@@ -3,9 +3,12 @@
 {% block title %}New Biens{% endblock %}
 
 {% block body %}
+
+<div class="container" style="margin-top: 100px;">
     <h1>Create new Biens</h1>
 
     {{ include('biens/_form.html.twig') }}
 
     <a href="{{ path('biens_index') }}">back to list</a>
+</div>
 {% endblock %}

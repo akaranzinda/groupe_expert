@@ -1,4 +1,25 @@
-{{ form_start(form) }}
-    {{ form_rest(form) }}
-    <button class="btn btn-success">{{ button_label|default('Enregitrer') }}</button>
-{{ form_end(form) }}
+     {{ form_start(form) }}
+      <div class="row">
+          <div class="col-md-4">{{ form_row(form.titre) }}</div>
+          <div class="col-md-4">{{ form_row(form.surface) }}</div>
+          <div class="col-md-4">{{ form_row(form.prix) }}</div>
+      </div>
+      <div class="row">
+          
+          <div class="col-md-2">{{ form_row(form.piece) }}</div>
+          <div class="col-md-2">{{ form_row(form.chambre) }}</div>
+          <div class="col-md-2">{{ form_row(form.vendu) }}</div>
+          <div class="col-md-2">{{ form_row(form.image) }}</div>
+
+
+      </div>
+      <div class="row">
+          <div class="col-md-5">{{ form_row(form.ville) }}</div>
+          
+          <div class="col-md-5">{{ form_row(form.description) }}</div>
+      </div>
+
+    {{ form_widget(form) }}
+      <button type='submit' class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+

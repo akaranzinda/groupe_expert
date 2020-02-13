@@ -24,17 +24,14 @@ class BiensType extends AbstractType
             ->add('codePostale')
             ->add('prix')
             ->add('vendu')
+            ->add('image')
+
             ->add('options', EntityType::class, [
                 'class' => Option::class,
                 'choice_label' => 'nom',
                 'multiple' => true
             ])
             
-            ->add('file', FileType::class, [
-                'label' => 'file',
-                'required' => false,
-                'data_class' => null
-            ])
         ;
     }
 

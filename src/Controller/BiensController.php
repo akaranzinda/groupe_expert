@@ -42,24 +42,7 @@ class BiensController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $file = $form->get('file')->getData();
-            if ($file) {
-                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                // $safeFilename = transliterator_transliterate("Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()", $originalFilename);
-                $newFilename = $originalFilename.'-'.uniqid().'.'.$file->guessExtension();
-                try {
-                    $file->move(
-                        $this->getParameter('files_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-                $bien->setFile($newFilename);
-
-            }
+    
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bien);
